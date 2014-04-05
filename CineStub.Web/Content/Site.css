@@ -1,0 +1,116 @@
+﻿body {
+    /*padding-top: 70px;*/
+    padding-bottom: 20px;
+}
+
+
+.btn-shadowed:hover {
+    -moz-box-shadow: 0px 0px 10px #000000;
+    -webkit-box-shadow: 0px 0px 10px #000000;
+    box-shadow: 0px 0px 10px #000000;
+    text-decoration: none;
+}
+
+.btn-shadowed:active {
+    transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9);
+    -moz-transform: scale(0.9, 0.9);
+    -o-transform: scale(0.9, 0.9);
+    -ms-transform: scale(0.9, 0.9);
+
+
+}
+
+.btn-shadowed-light, .btn-shadowed-light:hover, .btn-shadowed-light:focus {
+    color: black;
+}
+
+.btn-shadowed-dark, .btn-shadowed-dark:hover, .btn-shadowed-dark:focus {
+    color: white;
+    background-color: black; 
+}
+
+.btn-skewed {
+    transform: skew(-30deg, 0deg);
+    -webkit-transform: skew(-30deg, 0deg);
+    -moz-transform: skew(-30deg, 0deg);
+    -o-transform: skew(-30deg, 0deg);
+    -ms-transform: skew(-30deg, 0deg);
+}
+
+.btn-skewed-inverse {
+    transform: skew(30deg, 0deg);
+    -webkit-transform: skew(30deg, 0deg);
+    -moz-transform: skew(30deg, 0deg);
+    -o-transform: skew(30deg, 0deg);
+    -ms-transform: skew(30deg, 0deg);
+}
+
+.btn-skewed, .btn-skewed-inverse {
+    padding: 10px 20px;
+}
+
+.btn-red, .btn-red:focus, .btn-red:hover {
+    background-color: #c32a2a;
+    color: black; 
+}
+
+.btn-green:hover {
+    background-color: #7AB327;
+}
+
+.slot-closed {
+    background-color: cornflowerblue;
+}
+
+.slot-root {
+    background: black;
+    color: white;
+}
+
+.slot-root .btn {
+    color: white;
+}
+
+.borderless-table th, .borderless-table td { 
+     border-top: none; 
+ }
+
+.linkless-anchor:hover {
+    cursor: pointer;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.carousel-control:hover {
+    cursor: pointer;
+}
+
+.carousel-control.left {
+    background: none;
+}
+
+.carousel-control.right {
+    background: none;
+}
+
+.carousel-control .icon-prev, .carousel-control .icon-next {
+    font-size: 60px;
+}
+
+.schedule-table > thead > tr > th {
+    padding: 0;
+}
+
+/*.videocontent {
+	width:50%;
+	max-width: 500px;
+	margin: 0 auto;
+}*/
+
+object {
+position:absolute;
+top:0px;
+left:0px;}

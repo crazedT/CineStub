@@ -1,0 +1,18 @@
+﻿<div class="input-group" style="padding-top: 40px">
+    <input type="text" class="form-control input-lg" id="title" ng-model="movie.title" placeholder="Search Movie title">
+    <span class="input-group-btn">
+        <button class="btn btn-primary btn-lg" ng-click="searchTmdb(movie.title)" type="button"><i class="fa fa-search"></i></button>
+    </span>
+</div>
+    
+<br/>
+
+<button class="col-md-6 btn btn-link btn-shadowed" ng-repeat="searchResult in searchResults" style="padding: 20px" ng-click="addMovie(searchResult)">
+    <div class="col-xs-3 text-center">
+        <img ng-src="{{searchResult.posterUrlW154}}" err-src="/Images/No Image.png" style="height: 200px; width: 133px;" />
+    </div>
+    <div class="col-xs-9 text-left">
+        <h2>{{searchResult.title}}</h2>
+        <h3>{{searchResult.releaseDate | amDateFormat:'D.M.YYYY'}}</h3>
+    </div>
+</button>

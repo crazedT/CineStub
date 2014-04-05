@@ -1,0 +1,15 @@
+﻿
+    <h2>Current Movies</h2>
+    <button class="col-md-6 btn btn-link btn-shadowed" ng-repeat="movie in currentMovies" style="padding: 20px" ui-sref="movie({movieId: movie.id})">
+        <div class="col-xs-3 text-center">
+            <img ng-src="{{movie.posterUrlW154}}" err-src="/Images/No Image.png" style="height: 200px; width: 133px;" />
+        </div>
+        <div class="col-xs-9 text-left">
+            <h2>{{movie.title}}</h2>
+            <h3>{{searchResult.releaseDate | amDateFormat:'D.M.YYYY'}}</h3>
+        </div>
+    </button>
+
+<a ui-sref="movie({movieId: 1})">movie 1</a>
+
+<a ui-sref="schedule.edit">schedule</a>

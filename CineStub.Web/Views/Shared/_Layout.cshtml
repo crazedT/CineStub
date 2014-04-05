@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CineStub</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jwplayer.js"></script>
+</head>
+<body>
+    <div ng-include="'/app/layout/topnav.html'"></div>
+    
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    <script src="~/Scripts/underscore.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script src="~/Scripts/jwplayer.html5.js"></script>
+    
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-cookies.js"></script>
+    <script src="~/Scripts/angular-sanitize.js"></script>
+    <script src="~/Scripts/AngularUI/ui-router.js"></script>
+    <script src="~/Scripts/AngularUI/statehelper.js"></script>
+    <script src="~/Scripts/angular-moment.min.js"></script>
+    <script src="~/Scripts/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="~/Scripts/angular-jwplayer.js"></script>
+    
+
+    <script src="~/app/app.js"></script>
+    <script src="~/app/directives/errSrc.js"></script>
+    <script src="~/app/services/authService.js"></script>
+    <script src="~/app/services/dataService.js"></script>
+    <script src="~/app/layout/topnav.js"></script>
+    <script src="~/app/user/register.js"></script>
+    <script src="~/app/user/login.js"></script>
+    <script src="~/app/home/home.js"></script>
+    <script src="~/app/movie/movie_details.js"></script>
+    <script src="~/app/movie/movie_add.js"></script>
+    <script src="~/app/movie/movie_edit.js"></script>
+    <script src="~/app/schedule/schedule_edit.js"></script>
+    
+    <script>
+        function scrollToElement(selector, time, verticalOffset) {
+            time = typeof (time) != 'undefined' ? time : 1000;
+            verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset : 0;
+            element = $(selector);
+            offset = element.offset();
+            offsetTop = offset.top + verticalOffset;
+            $('html, body').animate({
+                scrollTop: offsetTop
+            }, time);
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿<div class="row" style="padding-top: 40px;">
+    <div class="col-xs-2">
+        <button class="btn btn-default btn-block" ng-click="addSchedule()"><i class="fa fa-plus"></i> Add new schedule</button>
+        <br/>
+        <div ng-repeat="schedule in schedules">
+            <button class="btn btn-link btn-block btn-shadowed" 
+                    ng-class="{'btn-shadowed-light': !scheduleSelected(schedule), 'btn-shadowed-dark': scheduleSelected(schedule)}" 
+                    ng-click="selectSchedule(schedule)">
+                <div class="col-xs-6">
+                    {{schedule.startDate | amDateFormat:'D.M.YYYY'}}
+                </div>
+                <div class="col-xs-6">
+                    {{schedule.endDate | amDateFormat:'D.M.YYYY'}}
+                </div>
+            </button>
+        </div>
+        
+    </div>
+    <div class="col-xs-6 text-center">
+        <div class="panel panel-default" ng-repeat="slotGroup in slotGroups">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <strong>{{slotGroup.dayOfWeek}}</strong> ({{slotGroup.dateTime | amDateFormat:'D.M.YYYY'}})
+                </h3>
+            </div>
+            <div class="panel-body">
+                <table class="borderless-table" style="width: 100%">
+                    <tr ng-repeat="slot in slotGroup.slots" ng-class="{'slot-root': isRoot(slot), 'slot-closed': !slotIsOpen(slot)}">
+                        <th style="width: 50px"><button class="btn btn-block">{{slot.dateTime | amDateFormat:'HH'}}</button></th>
+                        <td>
+                            <button class="btn btn-block btn-link" ng-if="slotIsOpen(slot)" ng-click="scheduleMovie(slot)"><i class="fa fa-film"></i></button>
+                            <button class="btn btn-block btn-link" ng-if="!slotIsOpen(slot) && isRoot(slot)" style="font-weight: bold" ng-click="unscheduleMovie(slot)">
+                                {{slot.movieTitle}}
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div ng-repeat="movie in movies">
+            <button class="btn btn-link btn-block btn-shadowed"
+                    ng-class="{'btn-shadowed-dark': movieSelected(movie), 'btn-shadowed-light': !movieSelected(movie)}"
+                    ng-click="selectMovie(movie)" >
+                <div class="col-xs-3">
+                    <img class="img-responsive" ng-src="{{movie.posterUrlW92}}" err-src="/Images/No Image.png" style="margin: 0 auto" />
+                </div>
+                <div class="col-xs-9 text-left">
+                    <h3>{{movie.title}}</h3>
+                    <p>{{movie.releaseDate | amDateFormat:'D.M.YYYY'}}</p>
+                    <p><img src="/Images/clock.png" style="height: 32px" /> {{movie.runtime}}</p>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>

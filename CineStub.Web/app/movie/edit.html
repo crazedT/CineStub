@@ -1,0 +1,38 @@
+﻿<div>
+    <div class="col-md-4">
+        <img class="img-responsive" ng-src="{{movie.posterUrlW780}}" alt="image" style="margin: 0 auto" />
+    </div>
+    <div class="col-md-8">
+        <div class="form-group">
+            <label for="title" class="control-label">Title</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="title" ng-model="movie.title">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="searchTmdb(movie.title)" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="overview" class="control-label">Overview</label>
+            <textarea class="form-control" id="overview" ng-model="movie.overview"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="runtime" class="control-label">Runtime</label>
+            <input type="number" class="form-control" id="runtime" ng-model="movie.runtime">
+        </div>
+        <div class="form-group">
+            <label for="genre" class="control-label">Genre</label>
+            <input type="text" class="form-control" id="genre" ng-model="movie.genres">
+        </div>
+        <div class="form-group" style="margin-top: 20px">
+            <div class="col-lg-4 text-center" ng-repeat="actorIndex in movie.movieCast.actorIndices" style="height: 350px;">
+                <img class="img-responsive" ng-src="{{actorIndex.actor.profileUrlW185}}" err-src="/Images/No Image.png" style="max-width: 185px; margin: 0 auto" />
+                <p>{{actorIndex.actor.name}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" ng-click="saveMovie()">Save</button>
+        </div>
+
+    </div>
+</div>

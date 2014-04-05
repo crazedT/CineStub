@@ -1,0 +1,90 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-6 no-padding" style="background-color: black; position: fixed; z-index: 1000; border: 1px solid white">
+        <div class="col-xs-3 no-padding">
+            <a class="smooth btn btn-link btn-block btn-shadowed btn-shadowed-dark btn-lg" data-smooth="movieinfo">
+                Info
+            </a>
+        </div>
+        <div class="col-xs-3 no-padding">
+            <a class="smooth btn btn-link btn-block btn-shadowed btn-shadowed-dark btn-lg" data-smooth="moviecast">
+                Cast
+            </a>
+        </div>
+        <div class="col-xs-3 no-padding">
+            <a class="smooth btn btn-link btn-block btn-shadowed btn-shadowed-dark btn-lg" data-smooth="movieimages">
+                Images
+            </a>
+        </div>
+        <div class="col-xs-3 no-padding">
+            <a class="smooth btn btn-link btn-block btn-shadowed btn-shadowed-dark btn-lg" data-smooth="movietrailer">
+                Trailer
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row movieinfo" style="padding: 60px 0;">
+    <div class="col-sm-9">
+        <h1 style="font-size: 50px">{{movie.title}}</h1>
+        <p>{{movie.genres}}</p>
+        <br />
+        <p style="font-size: 24px">{{movie.overview}}</p>
+        <br />
+        <img src="/Images/clock.png" style="height: 64px" /> <span style="font-size: 24px"> {{movie.runtime}}</span>
+    </div>
+    <div class="col-sm-3">
+        <img class="img-responsive" ng-src="{{movie.posterUrlW780}}" err-src="/Images/No Image.png" />
+    </div>
+</div>
+
+<div class="row moviecast" style="padding: 60px 0; background-color: #000000; color: white">
+    <ul class="list-unstyled">
+        <li ng-repeat="actorIndex in movie.movieCast.actorIndices | limitTo:12" class="col-lg-2 text-center" style="padding: 20px 0">
+            <img ng-src="{{actorIndex.actor.profileUrlW185}}" err-src="/Images/No Image.png" style="height: 250px" />
+            <p>{{actorIndex.actor.name}}</p>
+        </li>
+    </ul>
+</div>
+
+<div class="row movieimages" style="padding: 60px 0;">
+    <carousel interval="carouselInterval">
+        <slide ng-repeat="movieImage in movie.movieImages">
+            <img ng-src="{{movieImage.imageUrlW1280}}" style="margin:auto;">
+            <div class="carousel-caption">
+                <!--<h4>Slide {{$index}}</h4>
+                    <p>{{slide.text}}</p>-->
+            </div>
+        </slide>
+    </carousel>
+</div>
+
+<div class="row movietrailer text-center" style="padding: 60px 0; background-color: #000000; color: white">
+
+        <jwplayer id="myplayer" setup="jwOptions"></jwplayer>
+
+</div>
+
+<div class="row movieshowtimes" style="padding: 60px 0;">
+    <div class="row" style="padding: 0 50px">
+        <button class="btn btn-link btn-skewed" ng-repeat="slotGroup in showtimes" style="border: 1px solid black" ng-click="selectSlotGroup(slotGroup)"
+                ng-class-odd="'btn-shadowed-light'" ng-class-even="'btn-shadowed-dark'" ng-class="{'btn-red': slotGroupSelected(slotGroup)}">
+            <div class="btn-skewed-inverse"><strong>{{slotGroup.dayOfWeek}}</strong> <small>{{slotGroup.dateTime | amDateFormat:'D.M.YYYY'}}</small></div>
+        </button>
+    </div>
+    <div class="row" style="padding: 0 50px">
+        <button class="btn btn-link btn-skewed-inverse btn-shadowed-light btn-green" style="border: 1px solid black" ng-repeat="slot in selectedSlotGroup.slots">
+            <div class="btn-skewed">{{slot.dateTime | amDateFormat:'H:mm'}}</div>
+        </button>
+    </div>
+</div>
+
+
+
+
+<script>
+    $('a.smooth').click(function () {
+        var smooth = $(this).data("smooth");
+        console.log(smooth);
+        scrollToElement('.' + smooth, 500);
+    });
+</script>
